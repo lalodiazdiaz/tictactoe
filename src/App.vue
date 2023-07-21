@@ -63,7 +63,7 @@ const ResetGame = () => {
           v-for="(cell, y) in row"
           :key="y"
           @click="MakeMove(x, y)"
-          :class="`border border-white w-32 h-32 hover:bg-gray-700 flex items-center 
+          :class="`border border-white w-32 h-32 hover:bg-gray-700 flex items-center max-[900px]:w-24 max-[900px]:h-24
           justify-center material-icons-outlined text-6xl cursor-pointer ${
             cell === 'X' ? 'text-pink-500' : 'text-blue-400'
           }`"
@@ -72,7 +72,10 @@ const ResetGame = () => {
         </div>
       </div>
     </div>
-    <h2 v-if="winner" class="text-6xl font-bold mb-8">
+    <h2
+      v-if="winner"
+      class="text-6xl font-bold mb-8 max-[900px]:text-lg animate-pulse"
+    >
       Player {{ winner }} wins!!
     </h2>
 
