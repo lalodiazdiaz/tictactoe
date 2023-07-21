@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import Swal from "sweetalert2";
 
 const player = ref("X");
 
@@ -31,6 +32,7 @@ const CalculeteWinner = (board) => {
 };
 
 const winner = computed(() => CalculeteWinner(board.value.flat()));
+console.log(winner);
 
 const MakeMove = (x, y) => {
   if (winner.value) return;
@@ -42,6 +44,16 @@ const MakeMove = (x, y) => {
   player.value = player.value === "X" ? "O" : "X";
 };
 
+const youWin = computed(() => {
+  Swal.fire({
+    icon: "success",
+    title: `Good job  player ${winner.value}`,
+    text: "Do you want to play again??",
+    confirmButtonText: "Reset game",
+  }).then(() => {
+    ResetGame();
+  });
+});
 const ResetGame = () => {
   board.value = [
     ["", "", ""],
@@ -76,14 +88,15 @@ const ResetGame = () => {
       v-if="winner"
       class="text-6xl font-bold mb-8 max-[900px]:text-lg animate-pulse"
     >
-      Player {{ winner }} wins!!
+      {{ youWin() }}
     </h2>
 
     <button
+      v-if="!winner"
       @click="ResetGame"
-      class="px-4 py-2 bg-pink-500 rounded uppercase font-bold hover:bg-pink-600 duration-300"
+      class="px-4 py-2 bg-pink-500 rounded font-bold hover:bg-pink-600 duration-300"
     >
-      Reset Game
+      Clean board
     </button>
   </main>
 </template>
