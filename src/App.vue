@@ -82,6 +82,9 @@ const ResetGame = () => {
           {{ cell === "X" ? "close" : cell === "O" ? "circle" : "" }}
         </div>
       </div>
+      <h2 v-if="winner">
+        {{ youWin() }}
+      </h2>
     </div>
 
     <button
@@ -91,8 +94,5 @@ const ResetGame = () => {
     >
       Clean board
     </button>
-    <div v-else>
-      {{ youWin() }}
-    </div>
   </main>
 </template>
