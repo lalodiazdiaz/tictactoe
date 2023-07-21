@@ -85,11 +85,14 @@ const ResetGame = () => {
     </div>
 
     <button
-      v-if="!winner"
+      v-if="winner == null"
       @click="ResetGame"
       class="px-4 py-2 bg-pink-500 rounded font-bold hover:bg-pink-600 duration-300"
     >
       Clean board
     </button>
+    <div v-else>
+      {{ youWin() }}
+    </div>
   </main>
 </template>
