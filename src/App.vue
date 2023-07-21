@@ -32,7 +32,6 @@ const CalculeteWinner = (board) => {
 };
 
 const winner = computed(() => CalculeteWinner(board.value.flat()));
-console.log(winner);
 
 const MakeMove = (x, y) => {
   if (winner.value) return;
