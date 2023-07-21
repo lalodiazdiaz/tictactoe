@@ -84,12 +84,6 @@ const ResetGame = () => {
         </div>
       </div>
     </div>
-    <h2
-      v-if="winner"
-      class="text-6xl font-bold mb-8 max-[900px]:text-lg animate-pulse"
-    >
-      {{ youWin() }}
-    </h2>
 
     <button
       v-if="!winner"
